@@ -5,6 +5,7 @@ yarn.lock
 
 /coverage
 
+/build
 
 # Logs
 logs
