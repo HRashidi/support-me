@@ -1,6 +1,7 @@
 import React from 'react';
 import WebPay from 'webpay-bahamta';
 import config from '../../configs/bahamtaConfig';
+import pjson from '../../../package.json';
 import { setData } from '../../modules/storage';
 import { priceFormatter } from '../../modules/common';
 import FormInput from '../../components/form-input/form-input.component';
@@ -15,7 +16,7 @@ const HomePage = () => {
 		api_key : config.WEB_TOKEN,
 		reference : 'donate-' + new Date().valueOf(),
 		amount_irr: 50000,
-		callback_url : process.env.PUBLIC_URL + '/result',
+		callback_url : pjson.homepage + 'result',
 		payer_mobile: ''
 	}
 	console.log(initialValues.callback_url);
