@@ -19,7 +19,6 @@ const HomePage = () => {
 		callback_url : pjson.homepage + 'result',
 		payer_mobile: ''
 	}
-	console.log(initialValues.callback_url);
 	const validate = values => null;
 
 	const [errorMessage, setErrorMessage] = React.useState('');
