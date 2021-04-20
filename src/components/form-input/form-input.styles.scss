@@ -1,0 +1,55 @@
+@import '../../styles/global.styles.scss';
+
+
+.group {
+	position: relative;
+	margin: 1rem 0;
+	width: 100%;
+	.form-input {
+		font-family: inherit;
+		background-color: inherit;
+		color: $color-primary-fg;
+		font-size: 1rem;
+		padding: .5rem;
+		width: 100%;
+		border-radius: .2rem;
+		border: 1px solid $color-surface-2;
+		margin: .5rem 0;
+		resize: none;
+	}    
+
+
+	input[type='password']{
+		letter-spacing: 0.3em;
+	}
+
+	input:valid {
+		border-color: $color-success;
+	}
+
+	input:invalid {
+		border-color: $color-error;
+	}
+
+
+	.form-label {
+		font-family: inherit;
+		color: $color-primary-fg;
+		font-size: 1rem;
+		font-weight: normal;
+		pointer-events: none;
+		margin-right: .5rem;
+		display: table;
+		span {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: right;
+		}
+
+		&.required:after {
+			content:" * ";
+			color: #ff5858;
+		}
+		
+	}
+} 

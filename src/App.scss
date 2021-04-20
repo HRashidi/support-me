@@ -1,0 +1,8 @@
+@import './styles/global.styles.scss';
+.App {
+	text-align: center;
+	min-height: 100vh;
+	background-color: $color-background;
+	display: flex;
+	flex-flow: column wrap;
+}

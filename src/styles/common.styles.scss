@@ -1,0 +1,57 @@
+
+@mixin web-font {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 16px;
+}
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+	// For Google Chrome
+	&::-webkit-scrollbar {
+		width:  $size;
+		height: $size;
+		border-radius: $size/2;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+		// border-radius: $size / 2;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $background-color;
+	}
+
+	// For Internet Explorer
+	& {
+		scrollbar-face-color: $foreground-color;
+		scrollbar-track-color: $background-color;
+	}
+}
+
+
+@keyframes spin-anime {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes shake {
+	10%, 90% {
+	  transform: translate3d(-1px, 0, 0);
+	}
+	
+	20%, 80% {
+	  transform: translate3d(2px, 0, 0);
+	}
+  
+	30%, 50%, 70% {
+	  transform: translate3d(-4px, 0, 0);
+	}
+  
+	40%, 60% {
+	  transform: translate3d(4px, 0, 0);
+	}
+}

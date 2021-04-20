@@ -1,0 +1,42 @@
+@import '../../styles/global.styles.scss';
+
+.breadcrumb {
+	text-align: left;
+	display: block;
+	height: 2rem;
+	ul {
+		list-style: none; 
+		margin: 0;
+		li {
+			display: inline;
+			float: left;
+			display: table;
+			span {
+				height: 2rem;
+				display: table-cell;
+				text-align: center;
+				vertical-align: middle;
+				color: $color-primary-fg;
+				a {
+					color: inherit;
+				}
+				&.active {
+					color: $color-title-fg;
+				}
+				a:hover {
+					color: $color-secondary-fg;
+				}
+			}
+
+			&+li:before {
+				padding: 0 1rem;
+				display: table-cell;
+				text-align: center;
+				vertical-align: middle;
+				color: #979696;
+				content: '>';
+			}
+		}
+		
+	}
+}

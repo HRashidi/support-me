@@ -1,0 +1,50 @@
+@import '../../styles/global.styles.scss';
+.home-page {
+	display: flex;
+	flex-flow: column nowrap;
+	flex-grow: 1;
+	padding-top: 6rem;
+
+	.title {
+		color : $color-title-fg;
+		font-size: 1.3rem;
+		margin: 1rem;
+	}
+
+	.des {
+		color : $color-primary-fg;
+		font-size: 1rem;
+		line-height: 2rem;
+	}
+
+	.form-container {
+		display: flex;
+		width: 50vh;
+		margin: 0 auto;
+
+		form {
+			width: 100%;
+		}
+
+		button {
+			width: 100%;
+			margin: auto;
+		}
+
+		.price-value {
+			color: $color-success;
+			margin: 1rem;
+		}
+	}
+
+	.error-message {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 3rem;
+		color: $color-error;
+		border: solid 1px $color-error;
+		border-radius: 3px;
+		margin: 2rem auto;
+	}
+}

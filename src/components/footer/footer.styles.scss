@@ -1,0 +1,31 @@
+@import '../../styles/global.styles.scss';
+
+.footer {
+	background-color: $color-surface-1;
+	width: 100%;
+	color: $color-primary-fg;
+	display: flex;
+	flex-flow: column wrap;
+
+	.social-media {
+		text-align: center;
+		padding: 1rem 0 0 0;
+		font-size: .755rem;
+		min-width: 100% !important;
+
+		.icon {
+			margin: 0 .5rem;
+		}
+	}
+	.copyright {
+		text-align: center;
+		padding: 1rem 0 0 0;
+		font-size: .755rem;
+		min-width: 100% !important;
+	}
+
+	.date {
+		margin: .5rem;
+		font-size: .755rem;
+	}
+}

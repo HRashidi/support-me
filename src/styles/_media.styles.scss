@@ -1,0 +1,41 @@
+//breaklpoints
+
+$device-map: (
+	mobileS: 320,
+	mobileM: 375,
+	mobileL: 425,
+	tablet:  768,
+	laptop:  1024,
+	laptopL: 1440,
+	desktop: 2560,
+);
+
+@function num2pix($number) {
+	@return $number + px;
+};
+
+
+@mixin SmallerDevice($point) {
+	$H_Res : num2pix(map-get($device-map, $point) - 1);
+	@media (max-width: $H_Res) {
+		@content
+	}
+};
+
+
+@mixin LargerDevice($point) {
+	$L_Res : num2pix(map-get($device-map, $point));
+	@media (min-width: $L_Res) {
+		@content
+	}
+};
+
+@mixin BetweenDevice($lPoint, $hPoint) {
+
+	$L_Res : num2pix(map-get($device-map, $lPoint));
+	$H_Res : num2pix(map-get($device-map, $hPoint)- 1);
+
+	@media (min-width: $L_Res) and (max-width: $H_Res) {
+		@content
+	}
+};
