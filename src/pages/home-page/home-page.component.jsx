@@ -1,22 +1,56 @@
 import React from 'react';
 import WebPay from 'webpay-bahamta';
-import config from '../../configs/bahamtaConfig';
+import qs from 'query-string';
+import WEB_TOKEN from '../../configs/bahamtaConfig';
 import pjson from '../../../package.json';
-import { setData } from '../../modules/storage';
+import { setData, getData } from '../../modules/storage';
 import { priceFormatter } from '../../modules/common';
 import FormInput from '../../components/form-input/form-input.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
+import Spinner from '../../components/spinner/spinner.component';
 import useForm from '../../effects/use-form.effect';
-import { goTo } from '../../modules/navigation';
+import jumpTo, { goTo } from '../../modules/navigation';
 import './home-page.styles.scss';
 
-const HomePage = () => {
+const HomePage = ({ location }) => {
+
+	const [isLoading, setIsLoading] = React.useState(true);
+
+	// Check for retuen varialbe
+	let respond = location.search;
+	React.useEffect(()=> {
+		
+		const verifyPayment = async (reference, amount_irr) => {
+			let verify_response = await WebPay.verify(WEB_TOKEN, reference, amount_irr);
+			if(! verify_response.ok) {
+				jumpTo(process.env.PUBLIC_URL + '/failure');
+				return;
+			}
+			// let payment_info = verify_response.result;
+			jumpTo(process.env.PUBLIC_URL + '/success');
+
+		}
+
+		const {reference, state } = qs.parse(respond);
+		if(!reference) {
+			setIsLoading(false);
+			return;
+		}
+
+		let donationInfo = getData();
+		if(!donationInfo || donationInfo.reference!==reference || state === 'error') {
+			jumpTo(process.env.PUBLIC_URL + '/failure');
+			return;
+		}
+
+		verifyPayment(donationInfo.reference, donationInfo.amount_irr);
+	}, [respond]);
 
 	const initialValues = {
-		api_key : config.WEB_TOKEN,
+		api_key : WEB_TOKEN,
 		reference : 'donate-' + new Date().valueOf(),
 		amount_irr: 50000,
-		callback_url : pjson.homepage + 'result',
+		callback_url : pjson.homepage,
 		payer_mobile: ''
 	}
 	const validate = values => null;
@@ -38,6 +72,11 @@ const HomePage = () => {
 		useForm ({ initialValues, onSubmit, validate });
 	
 	return(
+		isLoading ? 
+		<div className="home-page">
+			<Spinner />
+		</div>
+		:
 		<div className="home-page">
 		<div className="title">
 			Support My Works
@@ -88,10 +127,6 @@ const HomePage = () => {
 				}
 			</form>
 		</div>
-
-			
-
-		
 	</div>
 )}
 
