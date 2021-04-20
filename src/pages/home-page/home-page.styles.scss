@@ -3,8 +3,9 @@
 	display: flex;
 	flex-flow: column nowrap;
 	flex-grow: 1;
+	
 	padding-top: 6rem;
-
+	padding-bottom: 4rem;
 	.title {
 		color : $color-title-fg;
 		font-size: 1.3rem;
@@ -15,6 +16,7 @@
 		color : $color-primary-fg;
 		font-size: 1rem;
 		line-height: 2rem;
+		padding: 1rem;
 	}
 
 	.form-container {
