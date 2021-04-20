@@ -18,6 +18,7 @@ const HomePage = () => {
 		callback_url : process.env.PUBLIC_URL + '/result',
 		payer_mobile: ''
 	}
+	console.log(initialValues.callback_url);
 	const validate = values => null;
 
 	const [errorMessage, setErrorMessage] = React.useState('');
